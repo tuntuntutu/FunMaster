@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="section">
+    <text class="title">选择游戏</text>
+    <view class="game-buttons">
+      <button bindtap="navigateToDice">骰子游戏</button>
+      <button bindtap="navigateToWheel">幸运轮盘</button>
+    </view>
+  </view>
+</view>

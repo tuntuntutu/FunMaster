@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="wheel-section">
+    <text class="title">幸运轮盘</text>
+    
+    <view class="wheel-container">
+      <view class="wheel {{isSpinning ? 'spinning' : ''}}" style="transform: rotate({{rotation}}deg)">
+        <view class="segment" wx:for="{{options}}" wx:key="index" style="transform: rotate({{index * (360/options.length)}}deg)">
+          {{item}}
+        </view>
+      </view>
+      <view class="pointer">▼</view>
+    </view>
+
+    <view class="options-control">
+      <text>选项（每行一个）：</text>
+      <textarea value="{{optionsText}}" bindinput="onOptionsChange" placeholder="输入选项，每行一个" />
+    </view>
+
+    <button bindtap="spinWheel" disabled="{{isSpinning}}">
+      {{isSpinning ? '旋转中...' : '开始旋转'}}
+    </button>
+  </view>
+</view>
