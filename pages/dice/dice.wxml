@@ -1,7 +1,6 @@
-<view class="container">
-  <view class="dice-section">
+<view class="page-container">
+  <view class="controls">
     <text class="title">骰子游戏</text>
-    
     <view class="dice-control">
       <text>骰子数量：</text>
       <radio-group bindchange="onDiceCountChange">
@@ -9,15 +8,16 @@
         <label><radio value="2" checked="{{diceCount === 2}}"/>2个</label>
       </radio-group>
     </view>
-
-    <view class="dice-area">
-      <view class="dice {{isRolling ? 'rolling' : ''}}" wx:for="{{diceResults}}" wx:key="index">
-        {{item}}
-      </view>
-    </view>
-
-    <button bindtap="rollDice" disabled="{{isRolling}}">
+    <button bindtap="throwDice" disabled="{{isRolling}}">
       {{isRolling ? '骰子转动中...' : '掷骰子'}}
     </button>
   </view>
+
+  <dice-container 
+    isShaking="{{isShaking}}" 
+    isRolling="{{isRolling}}"
+    diceList="{{diceList}}"
+    dicePositions="{{dicePositions}}"
+    diceData="{{diceData}}"
+  />
 </view>

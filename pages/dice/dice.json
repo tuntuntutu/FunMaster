@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "dice-container": "./components/dice-container",
+    "dice": "./components/dice",
+    "dice-dots": "./components/dice-dots"
+  }
+}

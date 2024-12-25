@@ -1,0 +1,18 @@
+<view class="dice-container {{isShaking ? 'shaking' : ''}}">
+  <view class="container-wall wall-left"></view>
+  <view class="container-wall wall-right"></view>
+  <view class="container-wall wall-front"></view>
+  <view class="container-wall wall-back"></view>
+  <view class="container-floor">
+    <block wx:for="{{diceList}}" wx:key="index">
+      <view class="dice-wrapper {{isRolling ? 'rolling' : ''}}" 
+            style="{{dicePositions[index]}}">
+        <dice 
+          value="{{diceData[index].value}}"
+          style="{{diceData[index].style}}"
+          faces="{{diceData[index].faces}}"
+        />
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,60 +1,163 @@
-.container {
-  padding: 20px;
-}
-
-.dice-section {
+.page-container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  padding: 20px;
+  background: #f0f0f0;
+}
+
+.dice-container {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  perspective: 1000px;
+  margin-top: 20px;
+}
+
+.container-wall {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #ccc;
+}
+
+.wall-left, .wall-right {
+  width: 100px;
+  height: 300px;
+  top: 0;
+}
+
+.wall-left {
+  left: -100px;
+  transform: rotateY(90deg);
+  transform-origin: right;
+}
+
+.wall-right {
+  right: -100px;
+  transform: rotateY(-90deg);
+  transform-origin: left;
+}
+
+.wall-front, .wall-back {
+  width: 300px;
+  height: 100px;
+  left: 0;
+}
+
+.wall-front {
+  bottom: -100px;
+  transform: rotateX(-90deg);
+  transform-origin: top;
+}
+
+.wall-back {
+  top: -100px;
+  transform: rotateX(90deg);
+  transform-origin: bottom;
+}
+
+.container-floor {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #ccc;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.dice-wrapper {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  transition: transform 1.2s ease-out;
+  transform-style: preserve-3d;
+}
+
+.dice-3d {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s ease-out;
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 10%;
+  box-sizing: border-box;
+}
+
+.dots-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 10%;
+  box-sizing: border-box;
+}
+
+.dot {
+  background: #333;
+  border-radius: 50%;
+  margin: 15%;
+}
+
+.rolling .dice-3d {
+  transform: rotateX(var(--finalX)) rotateY(var(--finalY)) rotateZ(var(--finalZ));
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px) rotate(-5deg); }
+  75% { transform: translateX(10px) rotate(5deg); }
+}
+
+.shaking {
+  animation: shake 0.2s ease-in-out infinite;
+}
+
+.controls {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+  text-align: center;
+  z-index: 1;
 }
 
 .title {
   font-size: 24px;
   margin-bottom: 20px;
+  display: block;
 }
 
 .dice-control {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.dice-area {
-  display: flex;
-  gap: 20px;
-  margin: 30px 0;
-}
-
-.dice {
-  width: 80px;
-  height: 80px;
-  background: #fff;
-  border: 2px solid #333;
-  border-radius: 10px;
+  margin: 20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  font-weight: bold;
+  gap: 10px;
 }
 
-.rolling {
-  animation: roll 0.5s ease-in-out infinite;
-}
-
-@keyframes roll {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+radio-group {
+  display: flex;
+  gap: 20px;
 }
 
 button {
-  padding: 15px 30px;
-  background-color: #007AFF;
+  width: 200px;
+  padding: 12px 0;
+  background: #007AFF;
   color: white;
   border-radius: 8px;
+  border: none;
 }
 
 button[disabled] {
-  background-color: #ccc;
+  background: #ccc;
 }

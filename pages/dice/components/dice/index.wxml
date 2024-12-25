@@ -1,0 +1,20 @@
+<view class="dice-3d" style="{{style}}">
+  <view class="face front">
+    <dice-dots dots="{{faces[value-1]}}"/>
+  </view>
+  <view class="face back">
+    <dice-dots dots="{{faces[5]}}"/>
+  </view>
+  <view class="face right">
+    <dice-dots dots="{{faces[3]}}"/>
+  </view>
+  <view class="face left">
+    <dice-dots dots="{{faces[1]}}"/>
+  </view>
+  <view class="face top">
+    <dice-dots dots="{{faces[4]}}"/>
+  </view>
+  <view class="face bottom">
+    <dice-dots dots="{{faces[2]}}"/>
+  </view>
+</view>

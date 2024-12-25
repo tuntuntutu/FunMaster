@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "dice-dots": "../dice-dots/index"
+  }
+}

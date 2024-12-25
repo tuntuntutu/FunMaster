@@ -1,0 +1,3 @@
+<view class="dots-container">
+  <view class="dot" wx:for="{{dots}}" wx:key="index" wx:if="{{item}}"></view>
+</view>
