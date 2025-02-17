@@ -1,0 +1,21 @@
+<!-- components/true-false-question/index.wxml -->
+<view class="true-false">
+    <view class="question-title">{{question.question}}</view>
+    <view class="options">
+        <view
+                class="option {{selected === true ? 'selected' : ''}}"
+                bindtap="handleSelect"
+                data-value="{{true}}"
+        >正确</view>
+        <view
+                class="option {{selected === false ? 'selected' : ''}}"
+                bindtap="handleSelect"
+                data-value="{{false}}"
+        >错误</view>
+    </view>
+    <text
+            wx:if="{{!question.hasSubmit}}"
+            class="submit-btn"
+            bindtap="submitAnswer"
+    >提交答案</text>
+</view>

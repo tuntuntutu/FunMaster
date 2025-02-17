@@ -1,0 +1,37 @@
+/* components/true-false-question/index.wxss */
+.true-false {
+    padding: 20rpx;
+}
+
+.question-title {
+    font-size: 32rpx;
+    margin-bottom: 30rpx;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+}
+
+.option {
+    flex: 1;
+    padding: 20rpx;
+    margin: 10rpx;
+    border: 1rpx solid #eee;
+    border-radius: 8rpx;
+    text-align: center;
+}
+
+.option.selected {
+    background: #f0f8ff;
+    border-color: #2196f3;
+}
+
+.submit-btn {
+    display: inline-block;
+    margin-left: 50%;
+    margin-top: 50rpx;
+    background: #2196f3;
+    color: white;
+    padding: 10rpx 20rpx;
+}

@@ -1,0 +1,129 @@
+<view class="container">
+  <view class="offline-tip" wx:if="{{isOfflineMode}}">
+    <text class="iconfont icon-warning"></text>
+    <text class="tip-text">当前处于离线模式，部分功能可能受限</text>
+  </view>
+
+  <view class="room-header">
+    <view class="room-main">
+      <view class="room-info">
+        <text class="room-name">{{room.name}}</text>
+        <view class="room-meta">
+          <text class="room-time">{{room.createTime}}</text>
+        </view>
+      </view>
+      <view class="room-status {{room.isEnded ? 'ended' : ''}}">
+        {{room.isEnded ? '已结束' : '进行中'}}
+      </view>
+    </view>
+    <view class="room-actions" wx:if="{{!room.isEnded}}">
+      <button class="invite-btn" open-type="share" wx:if="{{!isOfflineMode}}">邀请</button>
+      <button class="end-btn" bindtap="endRoom" wx:if="{{canManagePlayers}}">结束计分</button>
+    </view>
+    <view class="room-fee" wx:if="{{room.tableFee > 0}}">
+      台费：{{room.tableFee}}元/人
+    </view>
+  </view>
+
+  <view class="players-section">
+    <view class="section-title">玩家列表</view>
+    <view class="players-list">
+      <view class="player-item {{!item.openId ? 'empty-player' : ''}}" 
+        wx:for="{{room.players}}" 
+        wx:key="position"
+        bindtap="{{!item.openId ? 'addPlayer' : ''}}" 
+        data-position="{{index}}"
+      >
+        <view class="player-header">
+          <text class="player-position">{{['东', '南', '西', '北'][index]}}家</text>
+          <view class="player-actions" wx:if="{{item.openId && canManagePlayers}}">
+            <view class="remove-btn" catchtap="removePlayer" data-position="{{index}}">×</view>
+          </view>
+        </view>
+        
+        <view class="player-main">
+          <image class="player-avatar {{!item.openId ? 'empty' : ''}}" src="{{item.avatarUrl}}" mode="aspectFill"/>
+          <view class="player-info">
+            <text class="player-name {{!item.openId ? 'empty' : ''}}">{{item.nickName}}</text>
+            <text wx:if="{{item.openId}}" class="player-score {{room.totalScores[index] >= 0 ? 'positive' : 'negative'}}">
+              {{room.totalScores[index] || 0}}
+            </text>
+          </view>
+        </view>
+
+        <view class="player-join-tip" wx:if="{{!item.openId}}">
+          <text class="join-text">点击加入</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="games-section">
+    <view class="section-header">
+      <text class="section-title">对局记录</text>
+      <button class="create-btn" bindtap="createNewGame">
+        新建对局
+      </button>
+    </view>
+
+    <view class="games-list" wx:if="{{room.games.length > 0}}">
+      <view
+        class="game-item {{selectedGameIndex === index ? 'selected' : ''}}"
+        wx:for="{{room.games}}"
+        wx:key="index"
+        data-index="{{index}}"
+      >
+        <view class="game-header">
+          <text class="game-time">{{item.createTime}}</text>
+        </view>
+        <view class="game-scores">
+          <view class="score-item" wx:for="{{item.scores}}" wx:for-item="score" wx:key="index">
+            <image class="player-avatar-sm" src="{{room.players[index].avatarUrl}}" mode="aspectFill"/>
+            <text class="score {{score >= 0 ? 'positive' : 'negative'}}">{{score}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty" wx:else>
+      <text class="empty-text">还没有对局记录，点击上方按钮开始新的对局</text>
+    </view>
+  </view>
+
+  <!-- 分数输入弹窗 -->
+  <view class="score-input-modal" wx:if="{{showScoreInput}}">
+    <view class="modal-mask" bindtap="closeModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">输入分数</text>
+      </view>
+      <view class="score-inputs">
+        <view class="input-item" wx:for="{{room.players}}" wx:key="openId">
+          <view wx:if="{{item.avatarUrl}}">
+            <image class="player-avatar-sm" src="{{item.avatarUrl}}" mode="aspectFill"/>
+          </view>
+          <view wx:else>
+            {{item.nickName || index + 1 + '号'}}
+          </view>
+          <input
+            class="score-input"
+            type="digit"
+            value="{{currentScores[index]}}"
+            placeholder="0"
+            bindblur="onScoreInput"
+            data-index="{{index}}"
+          />
+        </view>
+      </view>
+      <view class="modal-footer">
+        <button
+          class="modal-submit-btn {{canSubmit ? '' : 'disabled'}}"
+          bindtap="submitScores"
+          disabled="{{!canSubmit}}"
+        >
+          确定
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

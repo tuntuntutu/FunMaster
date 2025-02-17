@@ -1,0 +1,21 @@
+<view class="container">
+    <view wx:if="{{step === 1}}">
+        <button
+                bindtap="switchType"
+                data-type="大学心理学">大学心理学
+        </button>
+        <button bindtap="switchType" data-type="教师伦理学">教师伦理学</button>
+        <button bindtap="switchType" data-type="高等教育学">高等教育学</button>
+        <button bindtap="switchType" data-type="高等教育法规">高等教育法规</button>
+    </view>
+    <view wx:if="{{step === 2}}">
+        <button
+                bindtap="navigateToDetail"
+                data-type="multiple_choice">多选题
+        </button>
+        <button bindtap="navigateToDetail" data-type="single_choice">单选题</button>
+        <button bindtap="navigateToDetail" data-type="true_false">判断题</button>
+    </view>
+
+
+</view>

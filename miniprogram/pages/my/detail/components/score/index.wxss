@@ -1,0 +1,25 @@
+.question-box {
+  padding: 10px;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.right {
+  color: green;
+}
+
+.wrong {
+  color: red;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.error-modal {
+  /* 定义错误模态框的样式 */
+}

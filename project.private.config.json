@@ -3,5 +3,6 @@
   "projectname": "FunMaster",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "3.6.6"
 }

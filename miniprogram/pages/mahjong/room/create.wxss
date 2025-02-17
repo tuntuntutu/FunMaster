@@ -1,0 +1,243 @@
+/* pages/mahjong/room/create.wxss */
+.container {
+  padding: 30rpx;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.offline-tip {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #fff7e6;
+  border-radius: 8rpx;
+  margin-bottom: 30rpx;
+}
+
+.icon-warning {
+  color: #faad14;
+  margin-right: 10rpx;
+}
+
+.tip-text {
+  font-size: 28rpx;
+  color: #d46b08;
+}
+
+.form-group {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+.form-item {
+  position: relative;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.input {
+  height: 80rpx;
+  font-size: 32rpx;
+  color: #333;
+  padding: 0 20rpx;
+  background-color: #f9f9f9;
+  border-radius: 8rpx;
+}
+
+.refresh-btn {
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #07c160;
+}
+
+.switch-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.button-group {
+  margin-top: 40rpx;
+}
+
+.primary-btn {
+  width: 100%;
+  text-align: center;
+  background-color: #07c160;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 8rpx;
+}
+
+.primary-btn.disabled {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.qr-code-container {
+  margin-top: 40rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  text-align: center;
+}
+
+.qr-code-wrapper {
+  margin-bottom: 30rpx;
+}
+
+.qr-code {
+  width: 400rpx;
+  height: 400rpx;
+  margin-bottom: 20rpx;
+}
+
+.qr-code-tip {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.share-btn {
+  background-color: #07c160;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 8rpx;
+}
+
+/* 字体图标 */
+@font-face {
+  font-family: 'iconfont';
+  src: url('data:font/woff2;charset=utf-8;base64,d09GMgABAAAAAAOMAAsAAAAAB5wAAAM+AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqDGIJwATYCJAMQCwoABCAFhG0HQhvqBhHVm5HIviiwm4kvp2odBwcp4nH0j4d4+G8/2n0z8/9PFNFEI0k0ZXWSSKVDpVAhJEJ5J939twHnkqYtUAFlKWX58Z7TvwAcYHNOFZUVKCrCjeW87D/HTJfPZ4PlN2e5jDFp0xfgaEKDjTFtgQQskOQ9xKu4mEA3k0Dapk1b4EhOQR1QrAvEE0d2gZyChlJDDq2hWbG1iDdQak0v0xkAr/7n4x80DiRNZtXR/eOcLmz6VHydRf//v8qOA8jns8E2I2MzkIgHlbYHZIXNZLp/ZmwX0LSS9Kn6Of45+3X2/3+xvUiprvzDI0RZIjRVzU5wFp5PJYpPRQifSoTPUqFEUcU1SYDuGOANwBgRmj6hW1cJ4XQ6G3G73R3dbswrNm1yud3Ord3Wd5pNYUGhzYZFhWxBQbHNtulqM9R0OKw2G2bbtLi42GrFbPYvW4EKwsXFHIhwQQGrKIQUFrKKQjp1kWUJk9WGBQRvxwICIZttU6DNUcYmhG2z2W02LGRLCwqtNhYU2G0FhWwRW1BgY0FhEVtYaGVBsb2wsMheYGOLbEVFVnvRhg0qm4N12GzWAuumwKKCIhYU2YsKbAVFRWyRzWFnQbHVxoICe0GhnQWF9kK7Y5PdWlBYWGgvKi4utBcWFdnZokJ7kb2gyFZYaGeLCwvtRQUOFhTai+zWTVZ7QZFtE1j/0YgwYJPNXmSz2goKrEWFdrvVXlhYZLcXFtgKC612q91qK7IV2O0FBfbCIpujsMhqtxfYC4uKrI4Cm8NqLyqyFhRZ7QX2ggLWXlhYaLcXsqDQbi90bLLZC4qsm0BNvZlXLH4vk5PzZiMjwWS5eaP5WQAf4DPzF+YLwGvm/+YXzAOAL8y/zLWkAcBX5qf/VTLpv5XZrBs/VVRxq6pIqXQVyOIyP0Gl6n8hXSM3IK01SYg0oyFpWYCsdRmyYDajYsdelLQcQtemY7jdjiOIRCmwYQ1AGDmApP8dZCNXkAW7AxWzHqBkFEF3l6Jwy44dKAxpJuwrUEh0wZnGpHzHa8g3XqXyF+T+GGHGpDjLKvMRO2QOy3yeEBHHiIf7YYhQKHABz8FZ5kGSJNDjqigvT0vS9VRRTqKQYFwTwHoJUBChE3CMMlHex+dC+YyvQuVXIPfr6AczjMShvmz0R1gHmYYVkc+jROTupnKX24OhEAgpcAI8B86kPCAiknpAj1MlNt4zlUiupzJUvqJ8fYXrAN1UVY+UyFGiiVpNt7ikoZWPSHmBhk2K0kA=') format('woff2');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 36rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-refresh:before {
+  content: "\e788";
+}
+
+.icon-warning:before {
+  content: "\e683";
+}
+
+.room-info {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  margin-top: 20rpx;
+}
+
+.room-header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.room-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.room-subtitle {
+  font-size: 28rpx;
+  color: #07c160;
+}
+
+.qr-section {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.qr-code {
+  width: 400rpx;
+  height: 400rpx;
+  margin: 20rpx 0;
+}
+
+.qr-tip {
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 16rpx;
+  display: block;
+}
+
+.room-details {
+  background: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 24rpx;
+  margin-bottom: 40rpx;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.detail-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.detail-value {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.action-group {
+  display: flex;
+  gap: 20rpx;
+}
+
+.share-btn, .enter-btn {
+  flex: 1;
+  text-align: center;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+}
+
+.share-btn {
+  background-color: #07c160;
+  color: #fff;
+}
+
+.enter-btn {
+  background-color: #1890ff;
+  color: #fff;
+}

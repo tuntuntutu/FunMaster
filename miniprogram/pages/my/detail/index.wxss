@@ -1,0 +1,162 @@
+/* pages/questions/index.wxss */
+.question-box {
+  padding: 140rpx 20rpx;
+  padding-top: 60rpx;
+}
+.switch-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.switch-container text {
+  margin-right: 20rpx;
+  font-size: 28rpx;
+}
+
+.question {
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  background: #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.right {
+  border-left: 8rpx solid #09bb07;
+}
+
+.wrong {
+  border-left: 8rpx solid #e64340;
+}
+
+.answer-status {
+  margin-top: 20rpx;
+  padding: 10rpx;
+  font-size: 26rpx;
+}
+
+.error {
+  color: #e64340;
+}
+
+.success {
+  color: #09bb07;
+}
+
+.page {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 20rpx 0;
+}
+.page .page-select{
+  margin: 0 20rpx;
+}
+.page .jump-page{
+  display: flex;
+  align-items: center;
+}
+
+.page .jump-page input{
+  margin: 0 4rpx;
+  width: 40rpx;
+  border: 2rpx solid #999;
+}
+
+.current-page {
+  margin: 0 30rpx;
+}
+
+.modal-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  width: 80%;
+  max-height: 80vh;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.modal-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.error-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+}
+
+.q-box {
+  width: 80rpx;
+  height: 80rpx;
+  margin: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8rpx;
+}
+
+.q-box.error {
+  background: #fee;
+  color: #e64340;
+}
+
+.q-box.right {
+  background: #e8fae8;
+  color: #09bb07;
+}
+.loading, .no-more {
+  text-align: center;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #888;
+}
+.score-box{
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background: white;
+  border: 1px solid #eaeaea;
+  box-shadow: #1a1a1a 0 0 10px;
+  padding: 10px;
+  border-radius: 10px;
+  max-height: 400px;
+  overflow: auto;
+  width: 100px;
+}
+.close-btn{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.answer{
+  margin-top: 10rpx;
+  padding: 10rpx;
+  background-color: #f9f9f9;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  color: #333;
+}

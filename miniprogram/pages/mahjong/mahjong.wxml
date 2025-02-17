@@ -1,0 +1,63 @@
+<view class="container">
+  <view class="header">
+    <button 
+      class="create-btn" 
+      bindtap="createRoom" 
+      wx:if="{{!showQRCode}}"
+    >
+      创建新房间
+    </button>
+  </view>
+
+  <view class="qr-section" wx:if="{{showQRCode}}">
+    <view class="qr-header">
+      <text class="qr-title">房间已创建</text>
+      <text class="qr-subtitle">扫描二维码加入房间</text>
+    </view>
+    <image class="qr-code" src="{{qrCodeUrl}}" mode="aspectFit" show-menu-by-longpress></image>
+    <button class="share-btn" open-type="share">分享房间</button>
+  </view>
+
+  <view class="rooms-section" wx:if="{{!showQRCode}}">
+    <view class="section-title">我的房间</view>
+    <view class="rooms-list">
+      <view class="room-item" 
+        wx:for="{{rooms}}" 
+        wx:key="_id" 
+        bindtap="goToRoomDetail" 
+        data-room-id="{{item._id}}"
+      >
+        <view class="room-main">
+          <view class="room-info">
+            <text class="room-name">{{item.name}}</text>
+            <view class="room-meta">
+              <text class="room-time">{{item.createTime}}</text>
+            </view>
+          </view>
+          <view class="room-status {{item.isEnded ? 'ended' : ''}}">
+            {{item.isEnded ? '已结束' : '进行中'}}
+          </view>
+        </view>
+        <view class="room-players">
+          <view class="player-avatars">
+            <image 
+              class="player-avatar {{index === 0 ? 'creator' : ''}}"
+              wx:for="{{item.players}}" 
+              wx:for-item="player" 
+              wx:key="position" 
+              src="{{player.avatarUrl}}"
+              mode="aspectFill"
+            ></image>
+          </view>
+          <text class="player-count">{{item.actualPlayerCount}}/4</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 离线提示 -->
+  <view class="offline-tip" wx:if="{{isOfflineMode}}">
+    <text class="iconfont icon-warning"></text>
+    <text class="tip-text">当前处于离线模式，数据将在网络恢复后同步</text>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+<view class="question-box">
+    <Score questions="{{questions}}"
+           userAnswers="{{userAnswers}}"
+           wrongQuestions="{{wrongQuestions}}" bind:setShowErrorModal="setShowErrorModal"/>
+    <block wx:for="{{currentQuestions}}" wx:key="id">
+        <view class="question {{item.hasSubmit && item.isCorrect ? 'right' : ''}} {{item.hasSubmit && !item.isCorrect ? 'wrong' : ''}}">
+            <Question q="{{item}}" bind:handleAnswerSubmit="handleAnswerSubmit"></Question>
+            <view wx:if="{{item.hasSubmit && !item.isCorrect}}" style="font-size: 14px;">
+                <text style="color: red;">回答错误</text>
+                <text wx:if="{{item.answer}}">正确答案：{{item.answer}}</text>
+            </view>
+            <text wx:if="{{item.hasSubmit && item.isCorrect}}" style="color: green; font-size: 14px;">回答正确</text>
+        </view>
+    </block>
+    <view class="page">
+        <Pagination mode="simple" pageSize="{{questionsPerPage}}" value="{{pageNo}}" total="{{questions.length - 1}}"
+                    bind:onChange="handlePageChange"/>
+    </view>
+    <Dialog visible="{{showQuestionModal}}" title="错误题目" onCancel="closeQuestionModal">
+        <ErrorQuestion q="{{currentWQuestion}}"></ErrorQuestion>
+    </Dialog>
+    <Dialog className="error-modal" visible="{{showErrorModal}}" title="答题情况" onCancel="closeErrorModal">
+        <block wx:for="{{questions}}" wx:key="id">
+            <text bindtap="showErrorQuestion" data-item="{{item}}">
+                <text wx:if="{{item.hasSubmit && item.pageNo}}"
+                      class="{{item.hasSubmit && !item.isCorrect ? 'q-box error' : 'q-box right'}}">{{item.pageNo}}
+                </text>
+            </text>
+        </block>
+    </Dialog>
+</view>

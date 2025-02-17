@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mahjong/mahjong",
+    "pages/mahjong/room/create",
+    "pages/mahjong/room/detail",
+    "pages/mahjong/room/invite",
+    "pages/my/index",
+    "pages/my/detail/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "麻将计分",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,78 @@
+<view class="container">
+  <view class="offline-tip" wx:if="{{isOfflineMode}}">
+    <text class="iconfont icon-warning"></text>
+    <text class="tip-text">当前处于离线模式，部分功能可能受限</text>
+  </view>
+
+  <block wx:if="{{!showQRCode}}">
+    <view class="form-group">
+      <view class="form-item">
+        <text class="label">房间名称</text>
+        <input 
+          class="input" 
+          value="{{roomName}}" 
+          placeholder="请输入房间名称" 
+          bindinput="onRoomNameInput"
+        />
+        <view class="refresh-btn" bindtap="generateRoomName">
+          <text class="iconfont icon-refresh"></text>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <text class="label">台费（元/人）</text>
+        <input 
+          class="input" 
+          type="digit" 
+          value="{{tableFee}}" 
+          placeholder="0" 
+          bindinput="onTableFeeInput"
+        />
+      </view>
+    </view>
+
+    <view class="button-group">
+      <button 
+        class="primary-btn {{isCreating ? 'disabled' : ''}}" 
+        bindtap="createRoom"
+        disabled="{{isCreating}}"
+      >
+        {{isCreating ? '创建中...' : '创建房间'}}
+      </button>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="room-info">
+      <view class="room-header">
+        <text class="room-title">{{roomName}}</text>
+        <text class="room-subtitle">房间已创建成功</text>
+      </view>
+
+      <view class="qr-section">
+        <image class="qr-code" src="{{qrCodeUrl}}" mode="aspectFit" show-menu-by-longpress/>
+        <text class="qr-tip">扫描二维码加入房间</text>
+      </view>
+
+      <view class="room-details">
+        <view class="detail-item">
+          <text class="detail-label">台费</text>
+          <text class="detail-value">{{tableFee}}元/人</text>
+        </view>
+        <view class="detail-item">
+          <text class="detail-label">玩家</text>
+          <text class="detail-value">{{players[0].nickName}}</text>
+        </view>
+      </view>
+
+      <view class="action-group">
+        <button class="share-btn" open-type="share">
+          分享给好友
+        </button>
+        <button class="enter-btn" bindtap="enterRoom">
+          进入房间
+        </button>
+      </view>
+    </view>
+  </block>
+</view>

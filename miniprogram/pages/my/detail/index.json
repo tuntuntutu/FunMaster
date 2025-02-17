@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "single-choice-question": "./components/single-choice-question/index",
+    "multiple-choice-question": "./components/multiple-choice-question/index",
+    "true-false-question": "./components/true-false-question/index"
+  }
+}

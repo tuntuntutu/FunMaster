@@ -1,0 +1,62 @@
+<!-- pages/questions/index.wxml -->
+<view class="question-box">
+    <!-- 显示答案开关 -->
+    <view class="switch-container">
+        <text>显示所有答案</text>
+        <switch checked="{{showAllAnswers}}" bindchange="handleSwitchChange" />
+    </view>
+    <!-- 得分展示 -->
+    <view class="score-box">
+        <view>总题数: {{total}}</view>
+        <text>错误: {{wrongQuestions.length}}</text>
+    </view>
+
+    <!-- 题目列表 -->
+    <block wx:for="{{questions}}" wx:key="id">
+        <view class="question {{item.hasSubmit ? (item.isCorrect ? 'right' : 'wrong') : ''}}">
+            <text>{{index + 1}}.</text>
+            <single-choice-question
+                    wx:if="{{item.type === 'single_choice'}}"
+                    question="{{item}}"
+                    bindsubmit="handleAnswerSubmit"
+            />
+            <multiple-choice-question
+                    wx:elif="{{item.type === 'multiple_choice'}}"
+                    question="{{item}}"
+                    bindsubmit="handleAnswerSubmit"
+            />
+            <true-false-question
+                    wx:elif="{{item.type === 'true_false'}}"
+                    question="{{item}}"
+                    bindsubmit="handleAnswerSubmit"
+            />
+
+            <view wx:if="{{item.hasSubmit}}" class="answer-status">
+                <text wx:if="{{!item.isCorrect}}" class="error">回答错误 正确答案：{{item.answer}}</text>
+                <text wx:else class="success">回答正确</text>
+            </view>
+            <!-- 显示答案 -->
+            <view wx:if="{{showAllAnswers}}" class="answer">
+                正确答案：{{item.answer}}
+            </view>
+        </view>
+    </block>
+
+    <!-- 分页 -->
+    <view class="page">
+        <text class="page-select" bindtap="handlePrevPage" disabled="{{pageNo === 1}}">上一页</text>
+        <text class="page-select" bindtap="handleNextPage" disabled="{{pageNo * questionsPerPage >= total}}">下一页</text>
+        <text class="current-page">{{pageNo}}/{{total/questionsPerPage}}</text>
+        <!-- 跳转页码输入框 -->
+        <view class="jump-page">
+            <text bindtap="jumpToPage">前往</text>
+            <input
+                    type="number"
+                    value="{{jumpPageNo}}"
+                    bindinput="handlePageInput"
+                    bindblur="jumpToPage"
+            />
+            <text>页</text>
+        </view>
+    </view>
+</view>

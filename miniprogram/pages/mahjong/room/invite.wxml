@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="invite-card">
+    <text class="title">{{room.name}}</text>
+    <image class="qr-code" src="{{qrCodeUrl}}" mode="aspectFit"/>
+    <view class="room-id">
+      <text>房间号：{{room.id}}</text>
+      <button class="copy-btn" bindtap="copyRoomId">复制</button>
+    </view>
+    <button class="enter-btn" bindtap="enterRoom">进入房间</button>
+  </view>
+</view>

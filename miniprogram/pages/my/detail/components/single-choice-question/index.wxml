@@ -1,0 +1,20 @@
+<!-- components/single-choice-question/index.wxml -->
+<view class="single-choice">
+    <view class="question-title">{{question.question}}</view>
+    <view class="options">
+        <block wx:for="{{question.options}}" wx:key="index">
+            <view
+                    class="option {{selected === index ? 'selected' : ''}}"
+                    bindtap="handleSelect"
+                    data-index="{{index}}"
+            >
+                {{item}}
+            </view>
+        </block>
+    </view>
+    <text
+            wx:if="{{!question.hasSubmit}}"
+            class="submit-btn"
+            bindtap="submitAnswer"
+    >提交答案</text>
+</view>

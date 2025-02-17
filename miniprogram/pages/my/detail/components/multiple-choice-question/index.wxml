@@ -1,0 +1,19 @@
+<view class="multiple-choice">
+    <view class="question-title">{{question.question}}</view>
+    <view class="options">
+        <block wx:for="{{computedItems}}" wx:key="index">
+            <view
+                    class="option {{ item.isSelected ? 'selected' : ''}}"
+                    bindtap="handleSelect"
+                    data-index="{{index}}"
+            >
+                {{item.item}}
+            </view>
+        </block>
+    </view>
+    <text
+            wx:if="{{!question.hasSubmit}}"
+            class="submit-btn"
+            bindtap="submitAnswer"
+    >提交答案</text>
+</view>
